@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MDA Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #858796;
+            --success-color: #1cc88a;
+            --info-color: #36b9cc;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+            --dark-color: #5a5c69;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .register-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .register-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .register-body {
+            padding: 2rem;
+        }
+
+        .brand-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            border: 2px solid #e3e6f0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 115, 223, 0.4);
+            color: white;
+        }
+
+        .btn-register:disabled {
+            opacity: 0.7;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            margin-right: 0.5rem;
+        }
+
+        .loading.show {
+            display: inline-block;
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .input-group-text {
+            background: transparent;
+            border: 2px solid #e3e6f0;
+            border-right: none;
+        }
+
+        .input-group .form-control {
+            border-left: none;
+        }
+
+        .input-group .form-control:focus + .input-group-text {
+            border-color: var(--primary-color);
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .role-select {
+            border: 2px solid #e3e6f0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .role-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <div class="brand-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h1>Create Account</h1>
+                <p>Join MDA Admin Dashboard</p>
+            </div>
+            
+            <div class="register-body">
+                <div id="alertContainer"></div>
+                
+                <form id="registerForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="first_name" class="form-label">First Name *</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="last_name" class="form-label">Last Name *</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username *</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                        <div class="form-text">Only letters, numbers, and underscores allowed</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role *</label>
+                        <select class="form-control role-select" id="role" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="client">Client</option>
+                            <option value="developer">Developer</option>
+                            <option value="designer">Designer</option>
+                            <option value="manager">Manager</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password *</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <span class="input-group-text password-toggle" onclick="togglePassword('password')">
+                                <i class="fas fa-eye" id="password-icon"></i>
+                            </span>
+                        </div>
+                        <div class="form-text">Minimum 6 characters</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="confirm_password" class="form-label">Confirm Password *</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                            <span class="input-group-text password-toggle" onclick="togglePassword('confirm_password')">
+                                <i class="fas fa-eye" id="confirm_password-icon"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-register">
+                        <span class="loading" id="loadingSpinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                        <span id="registerText">Create Account</span>
+                    </button>
+                </form>
+                
+                <div class="text-center mt-4">
+                    <p class="mb-0">
+                        Already have an account? 
+                        <a href="/login" class="text-decoration-none" style="color: var(--primary-color);">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class RegisterManager {
+            constructor() {
+                this.apiBase = '/api';
+                this.debounceTimers = {};
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.checkExistingAuth();
+            }
+
+            setupEventListeners() {
+                document.getElementById('registerForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.register();
+                });
+
+                // Real-time validation
+                document.getElementById('username').addEventListener('input', (e) => {
+                    this.validateUsername(e.target.value);
+                    if (e.target.value.length >= 3) {
+                        this.debounce(() => this.checkUsernameAvailability(e.target.value), 500, 'username');
+                    }
+                });
+
+                document.getElementById('email').addEventListener('input', (e) => {
+                    this.validateEmail(e.target.value);
+                    if (this.validateEmail(e.target.value)) {
+                        this.debounce(() => this.checkEmailAvailability(e.target.value), 500, 'email');
+                    }
+                });
+
+                document.getElementById('confirm_password').addEventListener('input', (e) => {
+                    this.validatePasswordMatch();
+                });
+            }
+
+            async checkExistingAuth() {
+                const token = localStorage.getItem('authToken');
+                if (token) {
+                    try {
+                        const response = await this.apiCall('/auth/me', 'GET', null, token);
+                        if (response.success) {
+                            window.location.href = '/';
+                        }
+                    } catch (error) {
+                        localStorage.removeItem('authToken');
+                    }
+                }
+            }
+
+            validateUsername(username) {
+                const usernameRegex = /^[a-zA-Z0-9_]+$/;
+                const isValid = usernameRegex.test(username) && username.length >= 3;
+                this.toggleFieldValidation('username', isValid, 'Username must be at least 3 characters and contain only letters, numbers, and underscores');
+                return isValid;
+            }
+
+            validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const isValid = emailRegex.test(email);
+                this.toggleFieldValidation('email', isValid, 'Please enter a valid email address');
+                return isValid;
+            }
+
+            validatePasswordMatch() {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm_password').value;
+                const isValid = password === confirmPassword && password.length >= 6;
+                this.toggleFieldValidation('confirm_password', isValid, 'Passwords must match and be at least 6 characters');
+                return isValid;
+            }
+
+            async checkUsernameAvailability(username) {
+                this.showFieldLoading('username', true);
+                try {
+                    const response = await this.apiCall('/auth/check-username', 'POST', { username });
+                    if (!response.available) {
+                        this.toggleFieldValidation('username', false, 'Username is already taken');
+                        return false;
+                    } else {
+                        this.toggleFieldValidation('username', true, 'Username is available');
+                        return true;
+                    }
+                } catch (error) {
+                    console.log('Username check failed:', error.message);
+                    return true; // Assume available if check fails
+                } finally {
+                    this.showFieldLoading('username', false);
+                }
+            }
+
+            async checkEmailAvailability(email) {
+                this.showFieldLoading('email', true);
+                try {
+                    const response = await this.apiCall('/auth/check-email', 'POST', { email });
+                    if (!response.available) {
+                        this.toggleFieldValidation('email', false, 'Email is already registered');
+                        return false;
+                    } else {
+                        this.toggleFieldValidation('email', true, 'Email is available');
+                        return true;
+                    }
+                } catch (error) {
+                    console.log('Email check failed:', error.message);
+                    return true; // Assume available if check fails
+                } finally {
+                    this.showFieldLoading('email', false);
+                }
+            }
+
+            toggleFieldValidation(fieldId, isValid, message) {
+                const field = document.getElementById(fieldId);
+                const feedback = document.getElementById(`${fieldId}-feedback`);
+                
+                if (!feedback) {
+                    const div = document.createElement('div');
+                    div.id = `${fieldId}-feedback`;
+                    div.className = 'invalid-feedback';
+                    div.textContent = message;
+                    field.parentNode.appendChild(div);
+                }
+
+                if (isValid) {
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                } else {
+                    field.classList.remove('is-valid');
+                    field.classList.add('is-invalid');
+                }
+            }
+
+            showFieldLoading(fieldId, loading) {
+                const field = document.getElementById(fieldId);
+                const parent = field.parentNode;
+                
+                // Remove existing loading indicator
+                const existingSpinner = parent.querySelector('.field-spinner');
+                if (existingSpinner) {
+                    existingSpinner.remove();
+                }
+                
+                if (loading) {
+                    const spinner = document.createElement('div');
+                    spinner.className = 'field-spinner';
+                    spinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    spinner.style.cssText = `
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: var(--primary-color);
+                        z-index: 10;
+                    `;
+                    parent.style.position = 'relative';
+                    parent.appendChild(spinner);
+                }
+            }
+
+            async register() {
+                const formData = this.getFormData();
+                
+                if (!this.validateForm(formData)) {
+                    return;
+                }
+
+                this.setLoading(true);
+
+                try {
+                    const response = await this.apiCall('/auth/register', 'POST', formData);
+                    
+                    if (response.success) {
+                        this.showAlert('Registration successful! Redirecting to login...', 'success');
+                        setTimeout(() => {
+                            window.location.href = '/login';
+                        }, 2000);
+                    } else {
+                        this.showAlert(response.error || 'Registration failed', 'danger');
+                    }
+                } catch (error) {
+                    this.showAlert('Registration failed: ' + error.message, 'danger');
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+
+            getFormData() {
+                return {
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    first_name: document.getElementById('first_name').value,
+                    last_name: document.getElementById('last_name').value,
+                    phone: document.getElementById('phone').value,
+                    role: document.getElementById('role').value
+                };
+            }
+
+            validateForm(data) {
+                if (!data.first_name || !data.last_name || !data.username || !data.email || !data.password || !data.role) {
+                    this.showAlert('Please fill in all required fields', 'warning');
+                    return false;
+                }
+
+                if (!this.validateUsername(data.username)) {
+                    this.showAlert('Please enter a valid username', 'warning');
+                    return false;
+                }
+
+                if (!this.validateEmail(data.email)) {
+                    this.showAlert('Please enter a valid email address', 'warning');
+                    return false;
+                }
+
+                if (!this.validatePasswordMatch()) {
+                    this.showAlert('Passwords do not match or are too short', 'warning');
+                    return false;
+                }
+
+                return true;
+            }
+
+            setLoading(loading) {
+                const spinner = document.getElementById('loadingSpinner');
+                const text = document.getElementById('registerText');
+                const button = document.querySelector('.btn-register');
+
+                if (loading) {
+                    spinner.classList.add('show');
+                    text.textContent = 'Creating Account...';
+                    button.disabled = true;
+                } else {
+                    spinner.classList.remove('show');
+                    text.textContent = 'Create Account';
+                    button.disabled = false;
+                }
+            }
+
+            showAlert(message, type) {
+                const container = document.getElementById('alertContainer');
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+                alertDiv.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                container.innerHTML = '';
+                container.appendChild(alertDiv);
+
+                // Auto-dismiss after 5 seconds
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+
+            async apiCall(endpoint, method = 'GET', data = null, token = null) {
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                const options = {
+                    method,
+                    headers,
+                    credentials: 'same-origin'
+                };
+
+                if (data && method !== 'GET') {
+                    options.body = JSON.stringify(data);
+                }
+
+                try {
+                    const response = await fetch(this.apiBase + endpoint, options);
+                    
+                    // Check if response is empty
+                    const responseText = await response.text();
+                    
+                    if (!responseText) {
+                        throw new Error('Server returned empty response. Please check if the server is running.');
+                    }
+                    
+                    let result;
+                    try {
+                        result = JSON.parse(responseText);
+                    } catch (parseError) {
+                        throw new Error(`Server returned invalid JSON: ${responseText.substring(0, 100)}`);
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(result.error || result.message || 'API request failed');
+                    }
+
+                    return result;
+                } catch (error) {
+                    console.error('API call failed:', error);
+                    throw error;
+                }
+            }
+
+            debounce(func, delay, key) {
+                if (this.debounceTimers[key]) {
+                    clearTimeout(this.debounceTimers[key]);
+                }
+                this.debounceTimers[key] = setTimeout(func, delay);
+            }
+        }
+
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = document.getElementById(fieldId + '-icon');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Initialize register manager when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new RegisterManager();
+        });
+    </script>
+</body>
+</html> 
