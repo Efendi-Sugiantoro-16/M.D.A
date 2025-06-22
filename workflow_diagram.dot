@@ -1,0 +1,237 @@
+digraph MDA_Workflow {
+    // Graph settings
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    
+    // Color scheme
+    subgraph cluster_0 {
+        label="MDA Website Architecture & Workflow";
+        style=filled;
+        color=lightblue;
+        
+        // User Entry Points
+        subgraph cluster_entry {
+            label="User Entry Points";
+            style=filled;
+            color=lightgreen;
+            
+            User [label="User/Client", shape=ellipse, fillcolor=yellow];
+            Browser [label="Web Browser", shape=box, fillcolor=lightcyan];
+        }
+        
+        // Main Pages
+        subgraph cluster_pages {
+            label="Main Pages";
+            style=filled;
+            color=lightyellow;
+            
+            Home [label="index.html\n(Home Page)", fillcolor=orange];
+            Products [label="product.html\n(Products & Services)", fillcolor=orange];
+            About [label="about.html\n(About Us)", fillcolor=orange];
+            Contact [label="contact.html\n(Contact Form)", fillcolor=orange];
+        }
+        
+        // Navigation System
+        subgraph cluster_nav {
+            label="Navigation System";
+            style=filled;
+            color=lightpink;
+            
+            NavBar [label="Navigation Bar\n(Fixed Header)", fillcolor=pink];
+            MobileMenu [label="Mobile Menu\n(Responsive)", fillcolor=pink];
+            MenuToggle [label="Menu Toggle\n(JavaScript)", fillcolor=pink];
+        }
+        
+        // Content Sections
+        subgraph cluster_content {
+            label="Content Sections";
+            style=filled;
+            color=lightgray;
+            
+            Hero [label="Hero Section\n(Welcome Message)", fillcolor=gray];
+            Services [label="Services Section\n(Web, Mobile, Design)", fillcolor=gray];
+            Features [label="Features Section\n(Service Highlights)", fillcolor=gray];
+            Team [label="Team Section\n(About Team)", fillcolor=gray];
+            ContactInfo [label="Contact Information\n(Email, Phone, Address)", fillcolor=gray];
+            ContactForm [label="Contact Form\n(Message Submission)", fillcolor=gray];
+            Footer [label="Footer\n(Social Links, Info)", fillcolor=gray];
+        }
+        
+        // Product Categories
+        subgraph cluster_products {
+            label="Product Categories";
+            style=filled;
+            color=lightcoral;
+            
+            WebDev [label="Web Development\n(Custom Websites, E-commerce)", fillcolor=coral];
+            MobileApps [label="Mobile Apps\n(iOS, Android, Cross-platform)", fillcolor=coral];
+            UIUX [label="UI/UX Design\n(User Interface Design)", fillcolor=coral];
+            Marketing [label="Digital Marketing\n(SEO, Social Media)", fillcolor=coral];
+        }
+        
+        // Interactive Features
+        subgraph cluster_interactive {
+            label="Interactive Features";
+            style=filled;
+            color=lightsteelblue;
+            
+            Filter [label="Product Filter\n(Category Filtering)", fillcolor=steelblue];
+            SmoothScroll [label="Smooth Scrolling\n(Anchor Links)", fillcolor=steelblue];
+            FormValidation [label="Form Validation\n(Email, Required Fields)", fillcolor=steelblue];
+            Animations [label="Animations\n(Fade-in, Hover Effects)", fillcolor=steelblue];
+            BackToTop [label="Back to Top\n(Scroll Button)", fillcolor=steelblue];
+        }
+        
+        // JavaScript Functionality
+        subgraph cluster_js {
+            label="JavaScript (main.js)";
+            style=filled;
+            color=lightseagreen;
+            
+            MobileMenuJS [label="Mobile Menu Toggle", fillcolor=seagreen];
+            FilterJS [label="Product Filtering", fillcolor=seagreen];
+            ScrollJS [label="Smooth Scrolling", fillcolor=seagreen];
+            FormJS [label="Form Handling", fillcolor=seagreen];
+            AnimationJS [label="Animation Observer", fillcolor=seagreen];
+            CounterJS [label="Counter Animation", fillcolor=seagreen];
+            NotificationJS [label="Notification System", fillcolor=seagreen];
+        }
+        
+        // CSS Styling
+        subgraph cluster_css {
+            label="CSS Styling (style.css)";
+            style=filled;
+            color=lightgoldenrod;
+            
+            TailwindCSS [label="Tailwind CSS\n(Utility Classes)", fillcolor=goldenrod];
+            CustomCSS [label="Custom CSS\n(Animations, Layout)", fillcolor=goldenrod];
+            ResponsiveCSS [label="Responsive Design\n(Mobile First)", fillcolor=goldenrod];
+            FontAwesome [label="Font Awesome\n(Icons)", fillcolor=goldenrod];
+        }
+        
+        // External Dependencies
+        subgraph cluster_external {
+            label="External Dependencies";
+            style=filled;
+            color=lightcoral;
+            
+            CDN_Tailwind [label="Tailwind CSS CDN", fillcolor=coral];
+            CDN_FontAwesome [label="Font Awesome CDN", fillcolor=coral];
+        }
+        
+        // Data Flow
+        subgraph cluster_data {
+            label="Data Flow";
+            style=filled;
+            color=lightcyan;
+            
+            FormData [label="Form Data\n(Name, Email, Message)", fillcolor=cyan];
+            Validation [label="Data Validation\n(Email Format, Required)", fillcolor=cyan];
+            Submission [label="Form Submission\n(Simulated)", fillcolor=cyan];
+            Notification [label="Success/Error\nNotifications", fillcolor=cyan];
+        }
+    }
+    
+    // Connections - User Flow
+    User -> Browser;
+    Browser -> Home;
+    Browser -> Products;
+    Browser -> About;
+    Browser -> Contact;
+    
+    // Navigation Flow
+    Home -> NavBar;
+    Products -> NavBar;
+    About -> NavBar;
+    Contact -> NavBar;
+    NavBar -> MobileMenu;
+    MobileMenu -> MenuToggle;
+    MenuToggle -> MobileMenuJS;
+    
+    // Page Content Flow
+    Home -> Hero;
+    Home -> Services;
+    Home -> Features;
+    About -> Team;
+    Contact -> ContactInfo;
+    Contact -> ContactForm;
+    Home -> Footer;
+    Products -> Footer;
+    About -> Footer;
+    Contact -> Footer;
+    
+    // Product Flow
+    Products -> Filter;
+    Filter -> WebDev;
+    Filter -> MobileApps;
+    Filter -> UIUX;
+    Filter -> Marketing;
+    Filter -> FilterJS;
+    
+    // Interactive Features Flow
+    SmoothScroll -> ScrollJS;
+    FormValidation -> FormJS;
+    Animations -> AnimationJS;
+    BackToTop -> ScrollJS;
+    
+    // CSS Dependencies
+    Home -> TailwindCSS;
+    Products -> TailwindCSS;
+    About -> TailwindCSS;
+    Contact -> TailwindCSS;
+    TailwindCSS -> CDN_Tailwind;
+    CustomCSS -> ResponsiveCSS;
+    FontAwesome -> CDN_FontAwesome;
+    
+    // Form Data Flow
+    ContactForm -> FormData;
+    FormData -> Validation;
+    Validation -> FormJS;
+    FormJS -> Submission;
+    Submission -> Notification;
+    Notification -> NotificationJS;
+    
+    // JavaScript Dependencies
+    MobileMenuJS -> CustomCSS;
+    FilterJS -> CustomCSS;
+    ScrollJS -> CustomCSS;
+    FormJS -> CustomCSS;
+    AnimationJS -> CustomCSS;
+    CounterJS -> CustomCSS;
+    NotificationJS -> CustomCSS;
+    
+    // Responsive Design
+    ResponsiveCSS -> MobileMenu;
+    ResponsiveCSS -> Browser;
+    
+    // Animation System
+    AnimationJS -> Animations;
+    AnimationJS -> CounterJS;
+    
+    // User Experience Flow
+    Hero -> SmoothScroll;
+    Services -> Filter;
+    Team -> Animations;
+    ContactInfo -> ContactForm;
+    ContactForm -> FormValidation;
+    
+    // Cross-page Navigation
+    Home -> Products [label="Explore Products"];
+    Home -> About [label="Learn More"];
+    Products -> Contact [label="Get Quote"];
+    About -> Contact [label="Get In Touch"];
+    
+    // Mobile Experience
+    MobileMenu -> ResponsiveCSS;
+    MenuToggle -> MobileMenuJS;
+    
+    // Performance Features
+    SmoothScroll -> BackToTop;
+    AnimationJS -> Animations;
+    FilterJS -> Filter;
+    
+    // Error Handling
+    FormValidation -> Notification;
+    Validation -> Notification;
+} 
