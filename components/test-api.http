@@ -1,0 +1,186 @@
+### MDA Backend API Tests
+### Gunakan file ini dengan REST Client extension di VS Code
+
+### Health Check
+GET http://localhost:3000/health
+
+### API Documentation
+GET http://localhost:3000/api
+
+### ========================================
+### AUTHENTICATION TESTS
+### ========================================
+
+### Register User
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "password123",
+    "first_name": "Test",
+    "last_name": "User",
+    "phone": "+1234567890"
+}
+
+### Login User
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@mda.com",
+    "password": "admin123"
+}
+
+### Get Current User (requires token)
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### ========================================
+### CONTACT FORM TESTS
+### ========================================
+
+### Submit Contact Form
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "company": "Example Corp",
+    "subject": "Website Development Inquiry",
+    "message": "I'm interested in getting a new website for my company. Can you provide more information about your services?",
+    "service_interest": "custom-website",
+    "budget_range": "5000-10000",
+    "timeline": "1-2-months"
+}
+
+### Get All Contact Messages (Admin only)
+GET http://localhost:3000/api/contact
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Single Contact Message (Admin only)
+GET http://localhost:3000/api/contact/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Update Contact Message Status (Admin only)
+PUT http://localhost:3000/api/contact/1/status
+Content-Type: application/json
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+{
+    "status": "read",
+    "priority": "medium"
+}
+
+### ========================================
+### SERVICES TESTS
+### ========================================
+
+### Get All Services
+GET http://localhost:3000/api/services
+
+### Get Featured Services
+GET http://localhost:3000/api/services?featured=true
+
+### Get Single Service
+GET http://localhost:3000/api/services/custom-website
+
+### ========================================
+### PROJECTS TESTS
+### ========================================
+
+### Get All Projects
+GET http://localhost:3000/api/projects
+
+### Get Projects by Status
+GET http://localhost:3000/api/projects?status=completed
+
+### Get Single Project
+GET http://localhost:3000/api/projects/example-project
+
+### ========================================
+### USERS TESTS (Admin only)
+### ========================================
+
+### Get All Users
+GET http://localhost:3000/api/users
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Users by Role
+GET http://localhost:3000/api/users?role=client
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Single User
+GET http://localhost:3000/api/users/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### ========================================
+### DASHBOARD TESTS (Admin/Manager only)
+### ========================================
+
+### Get Dashboard Overview
+GET http://localhost:3000/api/dashboard/overview
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Projects by Status
+GET http://localhost:3000/api/dashboard/projects-by-status
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Users by Role
+GET http://localhost:3000/api/dashboard/users-by-role
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Recent Activities
+GET http://localhost:3000/api/dashboard/recent-activities
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Get Monthly Statistics
+GET http://localhost:3000/api/dashboard/monthly-stats?year=2024
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### ========================================
+### ERROR HANDLING TESTS
+### ========================================
+
+### Test 404 Error
+GET http://localhost:3000/api/nonexistent
+
+### Test Invalid JSON
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+    "invalid": "json"
+}
+
+### Test Missing Required Fields
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "test"
+}
+
+### ========================================
+### RATE LIMITING TESTS
+### ========================================
+
+### Test Rate Limiting (make multiple requests quickly)
+GET http://localhost:3000/api/services
+
+### ========================================
+### NOTES
+### ========================================
+
+### 1. Replace YOUR_JWT_TOKEN_HERE with actual JWT token from login response
+### 2. Make sure MySQL server is running and configured in .env file
+### 3. Run database setup first: npm run migrate
+### 4. Default admin credentials: admin@mda.com / admin123
+### 5. All timestamps are in ISO 8601 format
+### 6. Pagination is available for list endpoints with ?page=1&limit=10
+### 7. Search functionality available with ?search=keyword
+### 8. Filtering available with ?status=value&role=value etc. 
