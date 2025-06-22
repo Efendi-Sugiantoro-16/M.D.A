@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - MDA</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-blue-600">MDA</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="product.html" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                    <a href="about.html" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button">
+                        <i class="fas fa-bars text-gray-500"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white">
+                <a href="index.html" class="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="product.html" class="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Products</a>
+                <a href="about.html" class="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="index.html#contact" class="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Products & Services</h1>
+                <p class="text-xl text-blue-100 mb-8">Discover our comprehensive range of digital solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300" data-filter="all">
+                    All Services
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="web">
+                    Web Development
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="mobile">
+                    Mobile Apps
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="design">
+                    UI/UX Design
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-blue-600 hover:text-white transition duration-300" data-filter="marketing">
+                    Digital Marketing
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                <!-- Web Development Products -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="web">
+                    <div class="bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-code text-5xl"></i>
+                                <span class="bg-blue-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Popular</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Custom Website</h3>
+                            <p class="text-blue-100 text-sm leading-relaxed">Professional websites tailored to your business needs with modern design and functionality.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Responsive Design</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">SEO Optimized</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Content Management</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">24/7 Support</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-blue-600">$2,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">2-3 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="web">
+                    <div class="bg-gradient-to-br from-green-500 via-blue-600 to-indigo-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-shopping-cart text-5xl"></i>
+                                <span class="bg-green-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Featured</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">E-commerce Platform</h3>
+                            <p class="text-green-100 text-sm leading-relaxed">Complete online store solutions with payment processing and inventory management.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-green-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Payment Integration</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-green-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Inventory Management</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-green-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Order Processing</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-green-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Analytics Dashboard</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-green-600">$4,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">4-6 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile App Products -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="mobile">
+                    <div class="bg-gradient-to-br from-purple-500 via-pink-600 to-rose-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-mobile-alt text-5xl"></i>
+                                <span class="bg-purple-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Premium</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">iOS App</h3>
+                            <p class="text-purple-100 text-sm leading-relaxed">Native iPhone and iPad applications with App Store submission and optimization.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Swift Development</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">App Store Submission</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Push Notifications</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Performance Optimization</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-purple-600">$8,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">8-12 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="mobile">
+                    <div class="bg-gradient-to-br from-purple-500 via-pink-600 to-rose-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fab fa-android text-5xl"></i>
+                                <span class="bg-purple-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Popular</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Android App</h3>
+                            <p class="text-purple-100 text-sm leading-relaxed">Native Android applications with Google Play Store integration and Material Design.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Kotlin Development</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Google Play Store</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Material Design</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-purple-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Cross-device Testing</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-purple-600">$7,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">6-10 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design Products -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="design">
+                    <div class="bg-gradient-to-br from-pink-500 via-rose-600 to-red-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-paint-brush text-5xl"></i>
+                                <span class="bg-pink-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Creative</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">UI Design Package</h3>
+                            <p class="text-pink-100 text-sm leading-relaxed">Beautiful and intuitive user interfaces with modern design principles and prototyping.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-pink-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Wireframing</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-pink-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Prototyping</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-pink-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Visual Design</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-pink-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Design System</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-pink-600">$1,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">1-2 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing Products -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="marketing">
+                    <div class="bg-gradient-to-br from-red-500 via-pink-600 to-purple-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-chart-line text-5xl"></i>
+                                <span class="bg-red-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Monthly</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">SEO Package</h3>
+                            <p class="text-red-100 text-sm leading-relaxed">Search engine optimization services to improve your website's visibility and rankings.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-red-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Keyword Research</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-red-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">On-page SEO</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-red-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Content Strategy</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-red-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Monthly Reports</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-red-600">$999</span>
+                                    <span class="text-gray-500 text-sm ml-2">/month</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Results Time</div>
+                                    <div class="text-sm font-medium text-gray-700">3-6 months</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="marketing">
+                    <div class="bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-ad text-5xl"></i>
+                                <span class="bg-indigo-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">ROI Focused</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">PPC Campaign</h3>
+                            <p class="text-indigo-100 text-sm leading-relaxed">Pay-per-click advertising management with A/B testing and performance tracking.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-indigo-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Google Ads Setup</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-indigo-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Campaign Management</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-indigo-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">A/B Testing</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-indigo-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Performance Tracking</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-indigo-600">$1,499</span>
+                                    <span class="text-gray-500 text-sm ml-2">/month</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Setup Time</div>
+                                    <div class="text-sm font-medium text-gray-700">1-2 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="web">
+                    <div class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-cogs text-5xl"></i>
+                                <span class="bg-blue-500 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Enterprise</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Web Application</h3>
+                            <p class="text-blue-100 text-sm leading-relaxed">Custom web applications and APIs with full-stack development and security implementation.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-600 mr-3 text-sm"></i>
+                                    <span class="text-sm">Full-stack Development</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-600 mr-3 text-sm"></i>
+                                    <span class="text-sm">Database Design</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-600 mr-3 text-sm"></i>
+                                    <span class="text-sm">API Development</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-blue-600 mr-3 text-sm"></i>
+                                    <span class="text-sm">Security Implementation</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-blue-700">$12,999</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">12-16 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100" data-category="design">
+                    <div class="bg-gradient-to-br from-yellow-500 via-orange-600 to-red-700 p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-12 -mb-12"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas fa-palette text-5xl"></i>
+                                <span class="bg-yellow-400 bg-opacity-30 text-xs font-semibold px-3 py-1 rounded-full">Complete</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Brand Identity</h3>
+                            <p class="text-yellow-100 text-sm leading-relaxed">Complete brand identity design including logo, color palette, and brand guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">What's Included:</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-yellow-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Logo Design</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-yellow-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Color Palette</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-yellow-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Typography</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check text-yellow-500 mr-3 text-sm"></i>
+                                    <span class="text-sm">Brand Guidelines</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border-t border-gray-100 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="text-3xl font-bold text-yellow-600">$2,499</span>
+                                    <span class="text-gray-500 text-sm ml-2">one-time</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-gray-500">Delivery Time</div>
+                                    <div class="text-sm font-medium text-gray-700">2-3 weeks</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-xl text-blue-100 mb-8">Let's discuss your project and find the perfect solution for your business</p>
+            <a href="index.html#contact" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg transition duration-300">
+                Contact Us Today
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-blue-400 mb-4">MDA</h3>
+                    <p class="text-gray-400">Modern Digital Agency - Transforming ideas into digital reality.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Web Development</a></li>
+                        <li><a href="#" class="hover:text-white">Mobile Apps</a></li>
+                        <li><a href="#" class="hover:text-white">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-white">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>info@mda.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>123 Digital Street</li>
+                        <li>Tech City, TC 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 MDA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
