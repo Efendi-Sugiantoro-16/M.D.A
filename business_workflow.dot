@@ -1,0 +1,176 @@
+digraph MDA_Business_Workflow {
+    // Graph settings
+    rankdir=LR;
+    node [shape=box, style=filled, fontname="Arial", fontsize=12];
+    edge [fontname="Arial", fontsize=10];
+    
+    // Business Process Flow
+    subgraph cluster_business {
+        label="MDA Business Workflow";
+        style=filled;
+        color=lightblue;
+        
+        // Lead Generation
+        subgraph cluster_lead_gen {
+            label="Lead Generation";
+            style=filled;
+            color=lightgreen;
+            
+            Website [label="Website\n(Online Presence)", fillcolor=green];
+            SEO [label="SEO Optimization\n(Search Visibility)", fillcolor=green];
+            SocialMedia [label="Social Media\n(Marketing)", fillcolor=green];
+            Referrals [label="Client Referrals\n(Word of Mouth)", fillcolor=green];
+        }
+        
+        // Website Interaction
+        subgraph cluster_interaction {
+            label="Website Interaction";
+            style=filled;
+            color=lightyellow;
+            
+            Visit [label="Website Visit\n(User Lands on Site)", fillcolor=yellow];
+            Browse [label="Browse Services\n(Products Page)", fillcolor=yellow];
+            Learn [label="Learn About\n(About Page)", fillcolor=yellow];
+            Contact [label="Contact Form\n(Lead Capture)", fillcolor=yellow];
+        }
+        
+        // Lead Qualification
+        subgraph cluster_qualification {
+            label="Lead Qualification";
+            style=filled;
+            color=lightpink;
+            
+            FormData [label="Form Data\n(Name, Email, Project)", fillcolor=pink];
+            Validation [label="Data Validation\n(Email, Required Fields)", fillcolor=pink];
+            LeadScore [label="Lead Scoring\n(Project Size, Budget)", fillcolor=pink];
+            Qualification [label="Lead Qualification\n(Ready to Contact)", fillcolor=pink];
+        }
+        
+        // Sales Process
+        subgraph cluster_sales {
+            label="Sales Process";
+            style=filled;
+            color=lightcoral;
+            
+            InitialContact [label="Initial Contact\n(Email/Phone)", fillcolor=coral];
+            Discovery [label="Discovery Call\n(Requirements Gathering)", fillcolor=coral];
+            Proposal [label="Proposal Creation\n(Scope, Timeline, Price)", fillcolor=coral];
+            Negotiation [label="Negotiation\n(Terms & Conditions)", fillcolor=coral];
+        }
+        
+        // Project Execution
+        subgraph cluster_execution {
+            label="Project Execution";
+            style=filled;
+            color=lightsteelblue;
+            
+            Contract [label="Contract Signing\n(Agreement)", fillcolor=steelblue];
+            Planning [label="Project Planning\n(Timeline, Resources)", fillcolor=steelblue];
+            Development [label="Development\n(Coding, Design)", fillcolor=steelblue];
+            Testing [label="Testing & QA\n(Quality Assurance)", fillcolor=steelblue];
+            Delivery [label="Project Delivery\n(Launch)", fillcolor=steelblue];
+        }
+        
+        // Post-Delivery
+        subgraph cluster_post_delivery {
+            label="Post-Delivery";
+            style=filled;
+            color=lightseagreen;
+            
+            Support [label="Support & Maintenance\n(Ongoing)", fillcolor=seagreen];
+            Feedback [label="Client Feedback\n(Satisfaction)", fillcolor=seagreen];
+            Referral [label="Referral Generation\n(New Leads)", fillcolor=seagreen];
+            Upsell [label="Upsell Opportunities\n(Additional Services)", fillcolor=seagreen];
+        }
+    }
+    
+    // Service Categories
+    subgraph cluster_services {
+        label="Service Categories";
+        style=filled;
+        color=lightgray;
+        
+        WebDev [label="Web Development\n(Custom Websites, E-commerce)", fillcolor=gray];
+        MobileApps [label="Mobile Apps\n(iOS, Android, Cross-platform)", fillcolor=gray];
+        UIUX [label="UI/UX Design\n(User Interface Design)", fillcolor=gray];
+        Marketing [label="Digital Marketing\n(SEO, Social Media)", fillcolor=gray];
+    }
+    
+    // Lead Generation Flow
+    Website -> Visit;
+    SEO -> Visit;
+    SocialMedia -> Visit;
+    Referrals -> Visit;
+    
+    // Website Interaction Flow
+    Visit -> Browse;
+    Visit -> Learn;
+    Browse -> Contact;
+    Learn -> Contact;
+    
+    // Service Selection
+    Browse -> WebDev;
+    Browse -> MobileApps;
+    Browse -> UIUX;
+    Browse -> Marketing;
+    
+    // Lead Qualification Flow
+    Contact -> FormData;
+    FormData -> Validation;
+    Validation -> LeadScore;
+    LeadScore -> Qualification;
+    
+    // Sales Process Flow
+    Qualification -> InitialContact;
+    InitialContact -> Discovery;
+    Discovery -> Proposal;
+    Proposal -> Negotiation;
+    
+    // Project Execution Flow
+    Negotiation -> Contract;
+    Contract -> Planning;
+    Planning -> Development;
+    Development -> Testing;
+    Testing -> Delivery;
+    
+    // Post-Delivery Flow
+    Delivery -> Support;
+    Delivery -> Feedback;
+    Feedback -> Referral;
+    Feedback -> Upsell;
+    
+    // Referral Loop
+    Referral -> Referrals;
+    Upsell -> Discovery;
+    
+    // Service-Specific Flows
+    WebDev -> Discovery [label="Web Project"];
+    MobileApps -> Discovery [label="Mobile Project"];
+    UIUX -> Discovery [label="Design Project"];
+    Marketing -> Discovery [label="Marketing Project"];
+    
+    // Decision Points
+    Validation -> FormData [label="Invalid Data"];
+    LeadScore -> Contact [label="Low Score"];
+    Negotiation -> Discovery [label="Revisions Needed"];
+    Testing -> Development [label="Bugs Found"];
+    Feedback -> Support [label="Issues"];
+    
+    // Success Metrics
+    subgraph cluster_metrics {
+        label="Success Metrics";
+        style=filled;
+        color=lightgoldenrod;
+        
+        ConversionRate [label="Conversion Rate\n(Visitors to Leads)", fillcolor=goldenrod];
+        CloseRate [label="Close Rate\n(Leads to Clients)", fillcolor=goldenrod];
+        ClientSatisfaction [label="Client Satisfaction\n(Feedback Score)", fillcolor=goldenrod];
+        ReferralRate [label="Referral Rate\n(Client Referrals)", fillcolor=goldenrod];
+    }
+    
+    // Metrics Connections
+    Contact -> ConversionRate;
+    Qualification -> CloseRate;
+    Feedback -> ClientSatisfaction;
+    Referral -> ReferralRate;
+} 
