@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDA Workflow Diagrams Viewer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .diagram-section {
+            margin-bottom: 40px;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .diagram-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .diagram-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5em;
+        }
+        
+        .diagram-header p {
+            margin: 10px 0 0 0;
+            color: #666;
+        }
+        
+        .diagram-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .dot-code {
+            background: #f8f9fa;
+            border: 1px solid #e1e5e9;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .view-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .view-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .download-links {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .download-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 14px;
+        }
+        
+        .download-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MDA Workflow Diagrams</h1>
+            <p>Modern Digital Agency - Technical & Business Workflow Analysis</p>
+        </div>
+        
+        <div class="content">
+            <div class="instructions">
+                <h3>How to View Diagrams:</h3>
+                <ol>
+                    <li>Click "View Online" button to open the diagram in GraphvizOnline</li>
+                    <li>Copy the DOT code and paste it into the online viewer</li>
+                    <li>Or download the generated files using the download links</li>
+                    <li>Use the batch/shell scripts to generate all diagrams locally</li>
+                </ol>
+            </div>
+            
+            <div class="diagram-section">
+                <div class="diagram-header">
+                    <h2>1. Complete Architecture Workflow</h2>
+                    <p>Comprehensive diagram showing the complete technical architecture, user interactions, and system components of the MDA website.</p>
+                </div>
+                <div class="diagram-content">
+                    <button class="view-button" onclick="viewDiagram('workflow_diagram')">View Online</button>
+                    <button class="view-button" onclick="copyCode('workflow_diagram')">Copy DOT Code</button>
+                    <div class="download-links">
+                        <a href="diagrams/workflow_diagram.png" download>Download PNG</a>
+                        <a href="diagrams/workflow_diagram.svg" download>Download SVG</a>
+                        <a href="diagrams/workflow_diagram.pdf" download>Download PDF</a>
+                    </div>
+                    <div class="dot-code" id="workflow_diagram_code" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="diagram-section">
+                <div class="diagram-header">
+                    <h2>2. User Workflow</h2>
+                    <p>User journey diagram showing how visitors interact with the website, from entry to form submission.</p>
+                </div>
+                <div class="diagram-content">
+                    <button class="view-button" onclick="viewDiagram('user_workflow')">View Online</button>
+                    <button class="view-button" onclick="copyCode('user_workflow')">Copy DOT Code</button>
+                    <div class="download-links">
+                        <a href="diagrams/user_workflow.png" download>Download PNG</a>
+                        <a href="diagrams/user_workflow.svg" download>Download SVG</a>
+                        <a href="diagrams/user_workflow.pdf" download>Download PDF</a>
+                    </div>
+                    <div class="dot-code" id="user_workflow_code" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="diagram-section">
+                <div class="diagram-header">
+                    <h2>3. Technical Architecture</h2>
+                    <p>Technical structure diagram showing file dependencies, JavaScript functionality, and CSS styling architecture.</p>
+                </div>
+                <div class="diagram-content">
+                    <button class="view-button" onclick="viewDiagram('technical_architecture')">View Online</button>
+                    <button class="view-button" onclick="copyCode('technical_architecture')">Copy DOT Code</button>
+                    <div class="download-links">
+                        <a href="diagrams/technical_architecture.png" download>Download PNG</a>
+                        <a href="diagrams/technical_architecture.svg" download>Download SVG</a>
+                        <a href="diagrams/technical_architecture.pdf" download>Download PDF</a>
+                    </div>
+                    <div class="dot-code" id="technical_architecture_code" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="diagram-section">
+                <div class="diagram-header">
+                    <h2>4. Business Workflow</h2>
+                    <p>Business process diagram showing the complete customer journey from lead generation to project delivery.</p>
+                </div>
+                <div class="diagram-content">
+                    <button class="view-button" onclick="viewDiagram('business_workflow')">View Online</button>
+                    <button class="view-button" onclick="copyCode('business_workflow')">Copy DOT Code</button>
+                    <div class="download-links">
+                        <a href="diagrams/business_workflow.png" download>Download PNG</a>
+                        <a href="diagrams/business_workflow.svg" download>Download SVG</a>
+                        <a href="diagrams/business_workflow.pdf" download>Download PDF</a>
+                    </div>
+                    <div class="dot-code" id="business_workflow_code" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load DOT code content
+        const dotFiles = {
+            'workflow_diagram': 'workflow_diagram.dot',
+            'user_workflow': 'user_workflow.dot',
+            'technical_architecture': 'technical_architecture.dot',
+            'business_workflow': 'business_workflow.dot'
+        };
+
+        // Load DOT code when page loads
+        window.addEventListener('load', async function() {
+            for (const [key, filename] of Object.entries(dotFiles)) {
+                try {
+                    const response = await fetch(filename);
+                    const content = await response.text();
+                    document.getElementById(key + '_code').textContent = content;
+                } catch (error) {
+                    console.log('Could not load ' + filename);
+                }
+            }
+        });
+
+        function viewDiagram(diagramType) {
+            const codeElement = document.getElementById(diagramType + '_code');
+            const code = codeElement.textContent;
+            
+            // Open GraphvizOnline with the code
+            const url = 'https://dreampuf.github.io/GraphvizOnline/';
+            const newWindow = window.open(url, '_blank');
+            
+            // Note: We can't directly paste the code due to CORS restrictions
+            // User will need to copy and paste manually
+            alert('Please copy the DOT code and paste it into the GraphvizOnline editor.');
+        }
+
+        function copyCode(diagramType) {
+            const codeElement = document.getElementById(diagramType + '_code');
+            const code = codeElement.textContent;
+            
+            // Toggle visibility
+            if (codeElement.style.display === 'none') {
+                codeElement.style.display = 'block';
+                // Copy to clipboard
+                navigator.clipboard.writeText(code).then(() => {
+                    alert('DOT code copied to clipboard!');
+                }).catch(() => {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = code;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('DOT code copied to clipboard!');
+                });
+            } else {
+                codeElement.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html> 
