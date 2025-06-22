@@ -1,0 +1,101 @@
+digraph MDA_User_Workflow {
+    // Graph settings
+    rankdir=LR;
+    node [shape=box, style=filled, fontname="Arial", fontsize=12];
+    edge [fontname="Arial", fontsize=10];
+    
+    // User Journey
+    Start [label="User Visits\nMDA Website", shape=ellipse, fillcolor=yellow];
+    
+    // Main Pages
+    Home [label="Home Page\n(index.html)", fillcolor=lightblue];
+    Products [label="Products Page\n(product.html)", fillcolor=lightgreen];
+    About [label="About Page\n(about.html)", fillcolor=lightyellow];
+    Contact [label="Contact Page\n(contact.html)", fillcolor=lightpink];
+    
+    // User Actions
+    BrowseServices [label="Browse Services\n(Web, Mobile, Design)", fillcolor=orange];
+    ViewProducts [label="View Product Details\n(Pricing, Features)", fillcolor=orange];
+    FilterProducts [label="Filter by Category\n(Web, Mobile, Design, Marketing)", fillcolor=orange];
+    LearnAbout [label="Learn About Team\n(Mission, Values, Team)", fillcolor=orange];
+    ContactInfo [label="View Contact Info\n(Email, Phone, Address)", fillcolor=orange];
+    FillForm [label="Fill Contact Form\n(Name, Email, Message)", fillcolor=orange];
+    SubmitForm [label="Submit Form\n(Validation & Processing)", fillcolor=orange];
+    
+    // System Responses
+    Validation [label="Form Validation\n(Email Format, Required Fields)", fillcolor=lightcoral];
+    Success [label="Success Message\n(Thank You Notification)", fillcolor=lightgreen];
+    Error [label="Error Message\n(Validation Errors)", fillcolor=red, fontcolor=white];
+    
+    // Navigation Options
+    ExploreProducts [label="Explore Products\nButton", fillcolor=gold];
+    LearnMore [label="Learn More\nButton", fillcolor=gold];
+    GetQuote [label="Get Quote\nButton", fillcolor=gold];
+    GetInTouch [label="Get In Touch\nButton", fillcolor=gold];
+    
+    // Interactive Features
+    MobileMenu [label="Mobile Menu\nToggle", fillcolor=lightgray];
+    SmoothScroll [label="Smooth Scrolling\nNavigation", fillcolor=lightgray];
+    BackToTop [label="Back to Top\nButton", fillcolor=lightgray];
+    
+    // User Flow
+    Start -> Home;
+    
+    // Home Page Flow
+    Home -> BrowseServices;
+    Home -> ExploreProducts;
+    Home -> LearnMore;
+    Home -> MobileMenu;
+    Home -> SmoothScroll;
+    Home -> BackToTop;
+    
+    // Products Page Flow
+    ExploreProducts -> Products;
+    Products -> ViewProducts;
+    Products -> FilterProducts;
+    Products -> GetQuote;
+    Products -> Contact;
+    
+    // About Page Flow
+    LearnMore -> About;
+    About -> LearnAbout;
+    About -> GetInTouch;
+    About -> Contact;
+    
+    // Contact Page Flow
+    GetQuote -> Contact;
+    GetInTouch -> Contact;
+    Contact -> ContactInfo;
+    Contact -> FillForm;
+    FillForm -> SubmitForm;
+    
+    // Form Processing
+    SubmitForm -> Validation;
+    Validation -> Success [label="Valid Data"];
+    Validation -> Error [label="Invalid Data"];
+    Error -> FillForm [label="Fix Errors"];
+    
+    // Cross-page Navigation
+    Home -> Products [label="Navigation Menu"];
+    Home -> About [label="Navigation Menu"];
+    Home -> Contact [label="Navigation Menu"];
+    Products -> Home [label="Navigation Menu"];
+    Products -> About [label="Navigation Menu"];
+    About -> Home [label="Navigation Menu"];
+    About -> Products [label="Navigation Menu"];
+    Contact -> Home [label="Navigation Menu"];
+    Contact -> Products [label="Navigation Menu"];
+    Contact -> About [label="Navigation Menu"];
+    
+    // Mobile Experience
+    MobileMenu -> Products [label="Mobile Nav"];
+    MobileMenu -> About [label="Mobile Nav"];
+    MobileMenu -> Contact [label="Mobile Nav"];
+    
+    // Smooth Scrolling
+    SmoothScroll -> ContactInfo [label="Anchor Links"];
+    SmoothScroll -> FillForm [label="Anchor Links"];
+    
+    // Back to Top
+    BackToTop -> Home [label="Scroll to Top"];
+} 
