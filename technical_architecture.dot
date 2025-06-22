@@ -1,0 +1,257 @@
+digraph MDA_Technical_Architecture {
+    // Graph settings
+    rankdir=TB;
+    node [shape=box, style=filled, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    
+    // Project Structure
+    subgraph cluster_project {
+        label="MDA Project Structure";
+        style=filled;
+        color=lightblue;
+        
+        // Root Directory
+        subgraph cluster_root {
+            label="Root Directory (MDA/)";
+            style=filled;
+            color=lightgreen;
+            
+            IndexHTML [label="index.html\n(13KB, 237 lines)", fillcolor=orange];
+            ProductHTML [label="product.html\n(42KB, 622 lines)", fillcolor=orange];
+            AboutHTML [label="about.html\n(20KB, 354 lines)", fillcolor=orange];
+            ContactHTML [label="contact.html\n(20KB, 342 lines)", fillcolor=orange];
+        }
+        
+        // CSS Directory
+        subgraph cluster_css {
+            label="CSS Directory (css/)";
+            style=filled;
+            color=lightyellow;
+            
+            StyleCSS [label="style.css\n(14KB, 686 lines)", fillcolor=yellow];
+        }
+        
+        // JavaScript Directory
+        subgraph cluster_js {
+            label="JavaScript Directory (js/)";
+            style=filled;
+            color=lightpink;
+            
+            MainJS [label="main.js\n(12KB, 376 lines)", fillcolor=pink];
+        }
+    }
+    
+    // External Dependencies
+    subgraph cluster_external {
+        label="External Dependencies";
+        style=filled;
+        color=lightgray;
+        
+        TailwindCDN [label="Tailwind CSS CDN\nv2.2.19", fillcolor=gray];
+        FontAwesomeCDN [label="Font Awesome CDN\nv6.0.0", fillcolor=gray];
+    }
+    
+    // HTML Structure Analysis
+    subgraph cluster_html_structure {
+        label="HTML Structure Analysis";
+        style=filled;
+        color=lightcyan;
+        
+        // Common Elements
+        subgraph cluster_common {
+            label="Common Elements";
+            style=filled;
+            color=lightcoral;
+            
+            Navigation [label="Navigation Bar\n(Fixed Header)", fillcolor=coral];
+            MobileMenu [label="Mobile Menu\n(Responsive)", fillcolor=coral];
+            Footer [label="Footer\n(Social Links)", fillcolor=coral];
+        }
+        
+        // Page Specific Elements
+        subgraph cluster_pages {
+            label="Page Specific Elements";
+            style=filled;
+            color=lightsteelblue;
+            
+            HeroSection [label="Hero Section\n(Gradient Background)", fillcolor=steelblue];
+            ServicesSection [label="Services Section\n(3 Columns Grid)", fillcolor=steelblue];
+            ProductsGrid [label="Products Grid\n(Filterable Cards)", fillcolor=steelblue];
+            TeamSection [label="Team Section\n(Team Cards)", fillcolor=steelblue];
+            ContactForm [label="Contact Form\n(Validation)", fillcolor=steelblue];
+        }
+    }
+    
+    // JavaScript Functionality
+    subgraph cluster_js_functionality {
+        label="JavaScript Functionality (main.js)";
+        style=filled;
+        color=lightseagreen;
+        
+        // Core Functions
+        subgraph cluster_core_functions {
+            label="Core Functions";
+            style=filled;
+            color=seagreen;
+            
+            MobileMenuToggle [label="Mobile Menu Toggle", fillcolor=seagreen];
+            ProductFilter [label="Product Filtering", fillcolor=seagreen];
+            SmoothScroll [label="Smooth Scrolling", fillcolor=seagreen];
+            FormHandling [label="Form Handling", fillcolor=seagreen];
+        }
+        
+        // Animation Functions
+        subgraph cluster_animation {
+            label="Animation Functions";
+            style=filled;
+            color=lightgoldenrod;
+            
+            IntersectionObserver [label="Intersection Observer", fillcolor=goldenrod];
+            CounterAnimation [label="Counter Animation", fillcolor=goldenrod];
+            HoverEffects [label="Hover Effects", fillcolor=goldenrod];
+            BackToTop [label="Back to Top Button", fillcolor=goldenrod];
+        }
+        
+        // Utility Functions
+        subgraph cluster_utilities {
+            label="Utility Functions";
+            style=filled;
+            color=lightcoral;
+            
+            EmailValidation [label="Email Validation", fillcolor=coral];
+            NotificationSystem [label="Notification System", fillcolor=coral];
+            DebounceFunction [label="Debounce Function", fillcolor=coral];
+        }
+    }
+    
+    // CSS Styling Analysis
+    subgraph cluster_css_analysis {
+        label="CSS Styling Analysis (style.css)";
+        style=filled;
+        color=lightgoldenrod;
+        
+        // Styling Categories
+        subgraph cluster_styling {
+            label="Styling Categories";
+            style=filled;
+            color=goldenrod;
+            
+            LayoutCSS [label="Layout Styles\n(Grid, Flexbox)", fillcolor=goldenrod];
+            AnimationCSS [label="Animation Styles\n(Transitions, Keyframes)", fillcolor=goldenrod];
+            ResponsiveCSS [label="Responsive Styles\n(Media Queries)", fillcolor=goldenrod];
+            CustomCSS [label="Custom Styles\n(Overrides)", fillcolor=goldenrod];
+        }
+    }
+    
+    // Data Flow
+    subgraph cluster_data_flow {
+        label="Data Flow & Interactions";
+        style=filled;
+        color=lightcyan;
+        
+        // User Interactions
+        subgraph cluster_interactions {
+            label="User Interactions";
+            style=filled;
+            color=cyan;
+            
+            UserClick [label="User Click Events", fillcolor=cyan];
+            FormSubmission [label="Form Submission", fillcolor=cyan];
+            ScrollEvents [label="Scroll Events", fillcolor=cyan];
+            FilterEvents [label="Filter Events", fillcolor=cyan];
+        }
+        
+        // System Responses
+        subgraph cluster_responses {
+            label="System Responses";
+            style=filled;
+            color=lightpink;
+            
+            DOMUpdates [label="DOM Updates", fillcolor=pink];
+            ValidationFeedback [label="Validation Feedback", fillcolor=pink];
+            AnimationTriggers [label="Animation Triggers", fillcolor=pink];
+            NotificationDisplay [label="Notification Display", fillcolor=pink];
+        }
+    }
+    
+    // Connections - File Dependencies
+    IndexHTML -> StyleCSS;
+    ProductHTML -> StyleCSS;
+    AboutHTML -> StyleCSS;
+    ContactHTML -> StyleCSS;
+    
+    IndexHTML -> MainJS;
+    ProductHTML -> MainJS;
+    AboutHTML -> MainJS;
+    ContactHTML -> MainJS;
+    
+    // External Dependencies
+    IndexHTML -> TailwindCDN;
+    ProductHTML -> TailwindCDN;
+    AboutHTML -> TailwindCDN;
+    ContactHTML -> TailwindCDN;
+    
+    IndexHTML -> FontAwesomeCDN;
+    ProductHTML -> FontAwesomeCDN;
+    AboutHTML -> FontAwesomeCDN;
+    ContactHTML -> FontAwesomeCDN;
+    
+    // HTML Structure Dependencies
+    IndexHTML -> Navigation;
+    ProductHTML -> Navigation;
+    AboutHTML -> Navigation;
+    ContactHTML -> Navigation;
+    
+    IndexHTML -> HeroSection;
+    IndexHTML -> ServicesSection;
+    ProductHTML -> ProductsGrid;
+    AboutHTML -> TeamSection;
+    ContactHTML -> ContactForm;
+    
+    // JavaScript Functionality Dependencies
+    MainJS -> MobileMenuToggle;
+    MainJS -> ProductFilter;
+    MainJS -> SmoothScroll;
+    MainJS -> FormHandling;
+    MainJS -> IntersectionObserver;
+    MainJS -> CounterAnimation;
+    MainJS -> EmailValidation;
+    MainJS -> NotificationSystem;
+    
+    // CSS Styling Dependencies
+    StyleCSS -> LayoutCSS;
+    StyleCSS -> AnimationCSS;
+    StyleCSS -> ResponsiveCSS;
+    StyleCSS -> CustomCSS;
+    
+    // Data Flow Connections
+    UserClick -> MobileMenuToggle;
+    UserClick -> ProductFilter;
+    UserClick -> SmoothScroll;
+    FormSubmission -> FormHandling;
+    ScrollEvents -> IntersectionObserver;
+    ScrollEvents -> BackToTop;
+    FilterEvents -> ProductFilter;
+    
+    FormHandling -> EmailValidation;
+    FormHandling -> ValidationFeedback;
+    EmailValidation -> NotificationSystem;
+    NotificationSystem -> NotificationDisplay;
+    IntersectionObserver -> AnimationTriggers;
+    AnimationTriggers -> DOMUpdates;
+    
+    // Responsive Design
+    ResponsiveCSS -> MobileMenu;
+    ResponsiveCSS -> Navigation;
+    
+    // Animation System
+    AnimationCSS -> HoverEffects;
+    AnimationCSS -> CounterAnimation;
+    IntersectionObserver -> AnimationTriggers;
+    
+    // Form Processing
+    ContactForm -> FormSubmission;
+    FormSubmission -> FormHandling;
+    FormHandling -> ValidationFeedback;
+    ValidationFeedback -> NotificationDisplay;
+} 
